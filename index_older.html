@@ -56,6 +56,7 @@
     }
     .grid {
       display: grid;
+      /* grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); */
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
       gap: 2.5rem;
       margin: 0 32px 42px 32px;
@@ -156,15 +157,6 @@
       .grid {margin: 0 2px;}
       .intro {margin: 0 2px;}
     }
-
-    /* Fix para mobile: previne cards diminuindo ao rolar */
-    @media (max-width: 360px) {
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
   </style>
   <script>
     // Animações scroll reveal simples

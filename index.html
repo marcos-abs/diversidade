@@ -2,16 +2,10 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Esportistas Negros do Brasil</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:700,400|Roboto:400,700&display=swap" rel="stylesheet">
   <style>
-    /* Reset e proteção contra extensões */
-    *, *::before, *::after {
-      box-sizing: border-box !important;
-      margin: 0;
-      padding: 0;
-    }
-
     :root {
       --azul-ueg: #1e3a8a;
       --azul-escuro: #0f1f4b;
@@ -21,286 +15,191 @@
       --cinza: #f3f4f6;
       --texto: #1f2937;
     }
-
-    html {
-      -webkit-text-size-adjust: 100% !important;
-      -ms-text-size-adjust: 100% !important;
-      overflow-x: hidden !important;
-      scroll-behavior: auto !important;
-      height: 100%;
-      font-size: 16px;
-    }
-
     body {
-      font-family: Arial, Helvetica, sans-serif !important;
-      background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-ueg) 70%, var(--verde-ueg) 100%) !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      color: var(--branco) !important;
-      overflow-x: hidden !important;
-      min-width: 100% !important;
-      width: 100% !important;
-      position: relative !important;
-      min-height: 100vh;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-ueg) 70%, var(--verde-ueg) 100%);
+      margin: 0; color: var(--branco);
     }
-
-    /* Proteção contra interferência de extensões */
-    body > div:not([class]),
-    body > div[id*="speechify"],
-    body > div[id*="extension"],
-    body > div[class*="extension"] {
-      display: none !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-    }
-
     .hero {
       text-align: center;
       padding: 48px 24px 32px;
       background: linear-gradient(90deg, var(--azul-ueg), var(--verde-ueg) 60%);
-      position: relative;
-      z-index: 1;
     }
-
     .hero h1 {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(1.8em, 5vw, 2.8em);
-      font-weight: 700;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 2.8em; font-weight: 700;
       margin-bottom: 0.3em;
-      line-height: 1.2;
     }
-
     .hero p {
-      font-size: clamp(1em, 3vw, 1.2em);
-      max-width: 640px;
-      margin: 0 auto;
+      font-size: 1.2em;
+      max-width: 640px; margin: 0 auto;
       color: var(--amarelo);
-      line-height: 1.5;
     }
-
     main {
-      background: var(--branco) !important;
-      color: var(--texto) !important;
+      background: var(--branco);
+      color: var(--texto);
       border-top-left-radius: 32px;
       border-top-right-radius: 32px;
       margin-top: -36px;
       box-shadow: 0 -2px 12px rgba(30,58,138,0.13);
       padding-bottom: 40px;
-      overflow: hidden !important;
-      position: relative;
-      z-index: 2;
     }
-
     .intro {
       text-align: center;
-      font-size: clamp(0.95em, 2.5vw, 1.1em);
+      font-size: 1.1em;
       padding: 38px 26px 20px 26px;
       color: var(--azul-escuro);
       background: var(--cinza);
       border-radius: 16px;
       margin: 0 16px 32px 16px;
       box-shadow: 0 2px 8px rgba(30,58,138,0.09);
-      line-height: 1.6;
     }
-
-    /* Grid com proteção máxima contra bugs mobile */
     .grid {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)) !important;
-      gap: 2.5rem !important;
-      margin: 0 auto !important;
-      padding: 0 32px 42px 32px !important;
-      max-width: 100% !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+      gap: 2.5rem;
+      margin: 0 32px 42px 32px;
     }
-
-    /* Cards com dimensões fixas e proteção */
     .atleta-card {
-      background: var(--branco) !important;
-      border-radius: 16px !important;
-      box-shadow: 0 4px 18px rgba(30,58,138,0.10) !important;
-      overflow: hidden !important;
-      transition: transform 0.29s ease, box-shadow 0.29s ease !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: flex-start !important;
-      position: relative !important;
-      border: 2px solid var(--cinza) !important;
-      min-width: 0 !important;
-      max-width: 100% !important;
-      width: 100% !important;
-      height: auto !important;
-      contain: layout !important;
+      background: var(--branco);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(30,58,138,0.10);
+      overflow: hidden;
+      transition: transform 0.29s cubic-bezier(.33,.62,.18,.91), box-shadow 0.29s;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      position: relative;
+      border: 2px solid var(--cinza);
     }
-
     .atleta-card:hover {
-      transform: translateY(-8px) scale(1.02) !important;
-      box-shadow: 0 10px 32px rgba(30,58,138,0.16) !important;
-      border-color: var(--verde-ueg) !important;
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 32px rgba(30,58,138,0.16);
+      border-color: var(--verde-ueg);
     }
-
     .atleta-card img {
-      width: 100% !important;
-      height: 220px !important;
-      object-fit: cover !important;
-      border-bottom: 2px solid var(--cinza) !important;
-      background: #d8dde1 !important;
-      display: block !important;
-      flex-shrink: 0 !important;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--cinza);
+      background: #d8dde1;
+      display: block;
     }
-
     .atleta-info {
-      padding: 22px 16px 14px 16px !important;
-      flex: 1 1 auto !important;
-      display: flex !important;
-      flex-direction: column !important;
+      padding: 22px 16px 14px 16px;
+      flex: 1 1 auto;
     }
-
     .atleta-nome {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 1.23em;
       font-weight: 700;
       margin-bottom: 7px;
       color: var(--azul-ueg);
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       gap: 7px;
-      line-height: 1.3;
     }
-
     .atleta-nome span.icone {
       font-size: 1.25em;
-      flex-shrink: 0;
     }
-
     .badge {
       display: inline-block;
       background: var(--verde-ueg);
       color: var(--branco);
-      padding: 5px 13px;
-      border-radius: 20px;
-      font-size: 0.82em;
-      font-weight: 600;
-      margin-bottom: 9px;
-      width: fit-content;
+      font-size: 0.98em;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 3px 12px 5px 12px;
+      margin-bottom: 7px;
     }
-
-    .nasc {
-      font-size: 0.88em;
-      color: #6b7280;
-      margin-bottom: 10px;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
     .desc {
-      color: var(--texto);
-      line-height: 1.6;
-      font-size: 0.94em;
-      flex: 1;
+      font-size: 1.03em;
+      margin-bottom: 7px;
+      margin-top: 4px;
     }
-
-    footer {
+    .nasc {
+      font-size: 0.97em;
+      margin-bottom: 4px;
+      color: var(--azul-escuro);
+      opacity: 0.74;
+    }
+    .creditos, .referencias {
+      margin: 38px auto 0 auto;
+      max-width: 560px;
+      color: var(--texto);
+      font-size: 1em;
+      background: var(--cinza);
+      border-radius: 13px;
+      box-shadow: 0 1px 6px rgba(30,58,138,0.06);
+      padding: 14px 24px 11px 24px;
+    }
+    .creditos strong, .referencias strong {color: var(--azul-ueg);}
+    .footer {
       background: var(--azul-escuro);
       color: var(--branco);
-      padding: 28px 18px;
       text-align: center;
-      font-size: 0.92em;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
+      padding: 20px 10px 14px 10px;
+      font-size: 1em;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      margin-top: 38px;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width:1024px) {
+      .grid {margin: 0 14px;}
+    }
+    @media (max-width:768px) {
+      .hero h1 {font-size: 2em;}
+      .grid {grid-template-columns: 1fr;}
+      main {border-radius: 16px;}
+    }
+    @media (max-width:480px) {
+      .grid {margin: 0 2px;}
+      .intro {margin: 0 2px;}
     }
 
-    footer p {
-      margin: 9px 0;
-    }
-
-    footer strong {
-      color: var(--amarelo);
-      font-weight: 700;
-    }
-
-    /* Media queries com !important para prevenir sobrescrita */
-    @media (max-width: 1024px) {
+    /* Fix para mobile: previne cards diminuindo ao rolar */
+    @media (max-width: 360px) {
       .grid {
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)) !important;
-        gap: 2rem !important;
-        padding: 0 20px 32px 20px !important;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
     }
 
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)) !important;
-        gap: 1.8rem !important;
-        padding: 0 16px 32px 16px !important;
-      }
-
-      .atleta-card img {
-        height: 200px !important;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 12px 32px 12px !important;
-      }
-
-      .atleta-card img {
-        height: 180px !important;
-      }
-
-      .intro {
-        padding: 24px 16px;
-        margin: 0 12px 24px 12px;
-      }
-    }
-
-    /* Proteção extra contra zoom e escalonamento */
-    @media screen and (max-width: 480px) {
-      html {
-        font-size: 16px !important;
-      }
-
-      body {
-        zoom: 1 !important;
-        transform: scale(1) !important;
-      }
-
-      .grid {
-        transform: none !important;
-        zoom: 1 !important;
-      }
-
-      .atleta-card {
-        transform: none !important;
-        zoom: 1 !important;
-        font-size: 1rem !important;
-      }
-
-      .atleta-card:hover {
-        transform: translateY(-4px) !important;
-      }
-    }
   </style>
+  <script>
+    // Animações scroll reveal simples
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.atleta-card');
+      function showOnScroll() {
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 60) {
+            card.style.opacity = 1;
+            card.style.transform += ' scale(1)';
+          } else {
+            card.style.opacity = 0;
+            card.style.transform += ' scale(0.98)';
+          }
+        });
+      }
+      window.addEventListener('scroll', showOnScroll);
+      showOnScroll();
+    });
+  </script>
 </head>
 <body>
   <div class="hero">
-    <h1>🏆 Esportistas Negros do Brasil</h1>
-    <p>Histórias de superação, conquistas e representatividade no esporte brasileiro</p>
+    <h1>Esportistas Negros do Brasil</h1>
+    <p data-selected="true" data-label-id="0" style="height: 74px;">Histórias de superação, conquistas e representatividade no esporte brasileiro</p>
   </div>
-
   <main>
-    <div class="intro">
-      Celebramos as trajetórias incríveis de atletas negros brasileiros que desafiaram barreiras e inspiraram gerações! Conheça as histórias, conquistas e trajetórias dos maiores esportistas negros do Brasil.
-    </div>
-
-    <div class="grid">
+    <section class="intro">
+      O esporte brasileiro sempre foi palco de grandes feitos de atletas negros que desafiaram barreiras e inspiraram gerações! Conheça as histórias, conquistas e trajetórias dos maiores esportistas negros do Brasil.<br>
+    </section>
+    <section class="grid">
+      <!-- Cards dos atletas -->
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_beca.png" alt="Rebeca Andrade" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_beca.png" alt="Rebeca Andrade, ginasta" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🤸‍♀️</span> Rebeca Andrade</div>
           <div class="badge">Ginástica Artística</div>
@@ -310,9 +209,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_pele.png" alt="Pelé" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_pele.png" alt="Pelé, futebol" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">⚽</span> Pelé</div>
           <div class="badge">Futebol</div>
@@ -322,9 +220,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_vini.png" alt="Vinícius Junior" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_vini.png" alt="Vinícius Junior, futebol" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">⚽</span> Vinícius Junior</div>
           <div class="badge">Futebol</div>
@@ -334,11 +231,10 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_formiga.png" alt="Formiga" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_formiga.png" alt="Formiga, futebol feminino" />
         <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">⚽</span> Formiga</div>
+          <div class="atleta-nome"><span class="icone">⚽</span> Formiga (Miraildes Maciel Mota)</div>
           <div class="badge">Futebol Feminino</div>
           <div class="nasc">1978</div>
           <div class="desc">
@@ -346,9 +242,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_bia.png" alt="Beatriz Souza" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_bia.png" alt="Beatriz Souza, judô" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🥋</span> Beatriz Souza</div>
           <div class="badge">Judô</div>
@@ -358,9 +253,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_aranha.jpg" alt="Anderson Silva" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_aranha.jpg" alt="Anderson Silva, MMA/UFC" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🥊</span> Anderson Silva</div>
           <div class="badge">MMA / UFC</div>
@@ -370,9 +264,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_daiane.jpg" alt="Daiane dos Santos" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_daiane.jpg" alt="Daiane dos Santos, ginasta" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🤸‍♀️</span> Daiane Garcia dos Santos</div>
           <div class="badge">Ginástica Artística</div>
@@ -382,9 +275,8 @@
           </div>
         </div>
       </div>
-
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_brilhante.jpg" alt="Alfredo Brilhante" loading="lazy" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_brilhante.jpg" alt="Alfredo Brilhante da Costa, basquete" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🏀</span> Alfredo Brilhante da Costa</div>
           <div class="badge">Basquete</div>
@@ -394,63 +286,18 @@
           </div>
         </div>
       </div>
+    </section>
+    <div class="creditos">
+      <strong>Discentes responsáveis:</strong>
+      Ana Clara Ferreira, Gabriella Silva do Nascimento, Hanna Nayla, Marcos Antônio Barbosa de Souza, Maria Letícia Alves Sampaio
+    </div>
+    <div class="referencias">
+      <strong>Referências:</strong>
+      Conteúdo extraído do projeto acadêmico “Esportistas Negros do Brasil”, Universidade Estadual de Goiás.
     </div>
   </main>
-
-  <footer>
-    <p><strong>Discentes responsáveis:</strong><br>Ana Clara Ferreira, Gabriella Silva do Nascimento, Hanna Nayla, Marcos Antônio Barbosa de Souza, Maria Letícia Alves Sampaio</p>
-    <p><strong>Referências:</strong><br>Conteúdo extraído do projeto acadêmico "Esportistas Negros do Brasil", Universidade Estadual de Goiás.</p>
+  <footer class="footer">
+    Universidade Estadual de Goiás (UEG) &copy; 2025. Todos os direitos reservados.
   </footer>
-
-  <script>
-    // Proteção adicional contra interferência de extensões
-    (function() {
-      'use strict';
-
-      // Prevenir modificações de layout por extensões
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.type === 'childList') {
-            mutation.addedNodes.forEach(function(node) {
-              if (node.nodeType === 1) {
-                // Remover elementos injetados por extensões que não fazem parte do conteúdo
-                if (node.id && (node.id.includes('speechify') || node.id.includes('extension'))) {
-                  node.remove();
-                }
-              }
-            });
-          }
-        });
-      });
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: false
-      });
-
-      // Forçar recálculo correto do grid após carregamento
-      window.addEventListener('load', function() {
-        const grid = document.querySelector('.grid');
-        if (grid) {
-          grid.style.display = 'none';
-          setTimeout(function() {
-            grid.style.display = 'grid';
-          }, 10);
-        }
-      });
-
-      // Prevenir zoom indesejado em mobile
-      document.addEventListener('gesturestart', function(e) {
-        e.preventDefault();
-      });
-
-      document.addEventListener('touchmove', function(e) {
-        if (e.scale !== 1) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-    })();
-  </script>
 </body>
 </html>

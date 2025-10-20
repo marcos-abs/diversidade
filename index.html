@@ -1,303 +1,215 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Esportistas Negros do Brasil</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter:700,400|Roboto:400,700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --azul-ueg: #1e3a8a;
-      --azul-escuro: #0f1f4b;
-      --verde-ueg: #00766f;
-      --branco: #fff;
-      --amarelo: #fbbf24;
-      --cinza: #f3f4f6;
-      --texto: #1f2937;
-    }
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-ueg) 70%, var(--verde-ueg) 100%);
-      margin: 0; color: var(--branco);
-    }
-    .hero {
-      text-align: center;
-      padding: 48px 24px 32px;
-      background: linear-gradient(90deg, var(--azul-ueg), var(--verde-ueg) 60%);
-    }
-    .hero h1 {
-      font-family: 'Inter', Arial, sans-serif;
-      font-size: 2.8em; font-weight: 700;
-      margin-bottom: 0.3em;
-    }
-    .hero p {
-      font-size: 1.2em;
-      max-width: 640px; margin: 0 auto;
-      color: var(--amarelo);
-    }
-    main {
-      background: var(--branco);
-      color: var(--texto);
-      border-top-left-radius: 32px;
-      border-top-right-radius: 32px;
-      margin-top: -36px;
-      box-shadow: 0 -2px 12px rgba(30,58,138,0.13);
-      padding-bottom: 40px;
-    }
-    .intro {
-      text-align: center;
-      font-size: 1.1em;
-      padding: 38px 26px 20px 26px;
-      color: var(--azul-escuro);
-      background: var(--cinza);
-      border-radius: 16px;
-      margin: 0 16px 32px 16px;
-      box-shadow: 0 2px 8px rgba(30,58,138,0.09);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
-      gap: 2.5rem;
-      margin: 0 32px 42px 32px;
-    }
-    .atleta-card {
-      background: var(--branco);
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(30,58,138,0.10);
-      overflow: hidden;
-      transition: transform 0.29s cubic-bezier(.33,.62,.18,.91), box-shadow 0.29s;
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-      position: relative;
-      border: 2px solid var(--cinza);
-    }
-    .atleta-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 10px 32px rgba(30,58,138,0.16);
-      border-color: var(--verde-ueg);
-    }
-    .atleta-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-bottom: 2px solid var(--cinza);
-      background: #d8dde1;
-      display: block;
-    }
-    .atleta-info {
-      padding: 22px 16px 14px 16px;
-      flex: 1 1 auto;
-    }
-    .atleta-nome {
-      font-family: 'Inter', Arial, sans-serif;
-      font-size: 1.23em;
-      font-weight: 700;
-      margin-bottom: 7px;
-      color: var(--azul-ueg);
-      display: flex; align-items: center;
-      gap: 7px;
-    }
-    .atleta-nome span.icone {
-      font-size: 1.25em;
-    }
-    .badge {
-      display: inline-block;
-      background: var(--verde-ueg);
-      color: var(--branco);
-      font-size: 0.98em;
-      font-weight: 700;
-      border-radius: 16px;
-      padding: 3px 12px 5px 12px;
-      margin-bottom: 7px;
-    }
-    .desc {
-      font-size: 1.03em;
-      margin-bottom: 7px;
-      margin-top: 4px;
-    }
-    .nasc {
-      font-size: 0.97em;
-      margin-bottom: 4px;
-      color: var(--azul-escuro);
-      opacity: 0.74;
-    }
-    .creditos, .referencias {
-      margin: 38px auto 0 auto;
-      max-width: 560px;
-      color: var(--texto);
-      font-size: 1em;
-      background: var(--cinza);
-      border-radius: 13px;
-      box-shadow: 0 1px 6px rgba(30,58,138,0.06);
-      padding: 14px 24px 11px 24px;
-    }
-    .creditos strong, .referencias strong {color: var(--azul-ueg);}
-    .footer {
-      background: var(--azul-escuro);
-      color: var(--branco);
-      text-align: center;
-      padding: 20px 10px 14px 10px;
-      font-size: 1em;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      margin-top: 38px;
-      letter-spacing: 0.02em;
-    }
-    @media (max-width:1024px) {
-      .grid {margin: 0 14px;}
-    }
-    @media (max-width:768px) {
-      .hero h1 {font-size: 2em;}
-      .grid {grid-template-columns: 1fr;}
-      main {border-radius: 16px;}
-    }
-    @media (max-width:480px) {
-      .grid {margin: 0 2px;}
-      .intro {margin: 0 2px;}
-    }
-
-    /* Fix para mobile: previne cards diminuindo ao rolar */
-    @media (max-width: 360px) {
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-  </style>
-  <script>
-    // Animações scroll reveal simples
-    document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.atleta-card');
-      function showOnScroll() {
-        cards.forEach(card => {
-          const rect = card.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 60) {
-            card.style.opacity = 1;
-            card.style.transform += ' scale(1)';
-          } else {
-            card.style.opacity = 0;
-            card.style.transform += ' scale(0.98)';
-          }
-        });
-      }
-      window.addEventListener('scroll', showOnScroll);
-      showOnScroll();
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportistas Negros do Brasil | UEG</title>
+    <meta name="description" content="Conheça os grandes atletas negros que marcaram a história do esporte brasileiro">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="hero">
-    <h1>Esportistas Negros do Brasil</h1>
-    <p data-selected="true" data-label-id="0" style="height: 78px;">Histórias de superação, conquistas e representatividade no esporte brasileiro</p>
-  </div>
-  <main>
-    <section class="intro">
-      O esporte brasileiro sempre foi palco de grandes feitos de atletas negros que desafiaram barreiras e inspiraram gerações! Conheça as histórias, conquistas e trajetórias dos maiores esportistas negros do Brasil.<br>
-    </section>
-    <section class="grid">
-      <!-- Cards dos atletas -->
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_beca.png" alt="Rebeca Andrade, ginasta" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">🤸‍♀️</span> Rebeca Andrade</div>
-          <div class="badge">Ginástica Artística</div>
-          <div class="nasc">1999, Guarulhos (SP)</div>
-          <div class="desc">
-            Rebeca Rodrigues Andrade é uma ginasta artística brasileira nascida em 1999. Conquistou a prata no Individual Geral (Tóquio 2020), ouro no Salto sobre a Mesa (Paris 2024) e prata no Solo. Símbolo de superação.
-          </div>
+    <!-- Header/Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Esportistas Negros do Brasil</h1>
+            <p class="hero-subtitle fade-in">Celebrando a excelência, resistência e representatividade no esporte brasileiro</p>
+            <div class="hero-cta fade-in">
+                <a href="#atletas" class="btn-primary">Conhecer os Atletas</a>
+            </div>
         </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_pele.png" alt="Pelé, futebol" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">⚽</span> Pelé</div>
-          <div class="badge">Futebol</div>
-          <div class="nasc">1940-2022</div>
-          <div class="desc">
-            Pelé, Edson Arantes do Nascimento, é considerado o maior jogador de futebol de todos os tempos. Tricampeão mundial, ícone histórico.
-          </div>
+        <div class="hero-bg"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Seção de Introdução -->
+        <section class="intro" id="intro">
+            <div class="container">
+                <div class="intro-content fade-in">
+                    <h2>A Força da Representatividade</h2>
+                    <p>O esporte brasileiro é marcado pela excelência de atletas negros que superaram barreiras, quebraram recordes e inspiraram gerações. Suas conquistas vão além das medalhas, representando resistência, determinação e a rica diversidade do nosso país. Conheça as histórias desses ícones que escreveram seus nomes na história do esporte mundial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Atletas -->
+        <section class="athletes" id="atletas">
+            <div class="container">
+                <h2 class="section-title fade-in">Nossos Campeões</h2>
+                <div class="athletes-grid">
+                    <!-- Rebeca Andrade -->
+                    <article class="athlete-card fade-in" data-aos="fade-up">
+                        <div class="athlete-image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1760819453/pplx_project_search_images/2920084a80a06dd566798dce98f578c69cc8c3ac.png" alt="Rebeca Andrade comemorando com a bandeira do Brasil">
+                        </div>
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">🤸‍♀️</span>
+                                <span class="sport-badge">Ginástica Artística</span>
+                            </div>
+                            <h3 class="athlete-name">Rebeca Andrade</h3>
+                            <p class="athlete-year">1999, Guarulhos (SP)</p>
+                            <p class="athlete-description">Rebeca Rodrigues Andrade é uma ginasta artística brasileira nascida em 1999, em Guarulhos (SP). Sua carreira é marcada por grande resiliência. Em Tóquio 2020 (2021) conquistou a prata no Individual Geral, a primeira medalha olímpica da história do Brasil na ginástica artística. Em Paris 2024: Conquistou o Ouro no Salto sobre a Mesa e a Prata no Solo. Rebeca é uma das maiores atletas da história do esporte brasileiro e um símbolo de superação.</p>
+                        </div>
+                    </article>
+
+                    <!-- Pelé -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="100">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">⚽</span>
+                                <span class="sport-badge">Futebol</span>
+                            </div>
+                            <h3 class="athlete-name">Pelé</h3>
+                            <p class="athlete-year">1940-2022</p>
+                            <p class="athlete-description">Pelé, nascido Edson Arantes do Nascimento em 1940 e falecido em 2022, é universalmente aclamado como o maior jogador de futebol da história. Sua carreira foi dividida entre o Santos Futebol Clube (1956-1974), onde conquistou múltiplas Taças do Brasil e duas Libertadores/Mundiais Intercontinentais. É o único jogador a vencer três Copas do Mundo (1958, 1962 e 1970). Ele se aposentou oficialmente em 1977, com 1.279 gols na carreira, sendo um ícone global, embaixador do esporte e ex-Ministro dos Esportes do Brasil.</p>
+                        </div>
+                    </article>
+
+                    <!-- Vinícius Junior -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="200">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">⚽</span>
+                                <span class="sport-badge">Futebol</span>
+                            </div>
+                            <h3 class="athlete-name">Vinícius Junior</h3>
+                            <p class="athlete-year">2000, Rio de Janeiro</p>
+                            <p class="athlete-description">Vinícius Júnior, nascido em 12 de julho de 2000 no Rio de Janeiro, iniciou no Flamengo (estreia em 2017), transferiu-se para o Real Madrid em 2018 e conquistou 4 La Ligas, 2 Champions Leagues e a medalha de ouro olímpica de 2020 pelo Brasil. É reconhecido por sua velocidade e ativismo contra o racismo.</p>
+                        </div>
+                    </article>
+
+                    <!-- Formiga -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="300">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">⚽</span>
+                                <span class="sport-badge">Futebol Feminino</span>
+                            </div>
+                            <h3 class="athlete-name">Formiga</h3>
+                            <p class="athlete-subtitle">Miraildes Maciel Mota</p>
+                            <p class="athlete-year">1978</p>
+                            <p class="athlete-description">Formiga (Miraildes Maciel Mota, nascida em 1978) é uma lendária volante do futebol feminino brasileiro, famosa por sua dedicação. É a única atleta (homem ou mulher) a participar de sete edições dos Jogos Olímpicos (de 1996 a 2020). Participou de sete Copas do Mundo (1999 a 2019). Com a Seleção Brasileira, conquistou duas medalhas de prata olímpicas (2004 e 2008) e o vice-campeonato mundial em 2007. Aposentou-se da Seleção em 2021, aos 43 anos, após uma carreira de mais de duas décadas.</p>
+                        </div>
+                    </article>
+
+                    <!-- Beatriz Souza -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="400">
+                        <div class="athlete-image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1760819453/pplx_project_search_images/6ea329cfc3dc6dc105d461f596fecfe173e73a71.png" alt="Beatriz Souza com medalha de ouro de Paris 2024">
+                        </div>
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">🥋</span>
+                                <span class="sport-badge">Judô</span>
+                            </div>
+                            <h3 class="athlete-name">Beatriz Souza</h3>
+                            <p class="athlete-year">1998, Itariri (SP)</p>
+                            <p class="athlete-description">Beatriz Souza é uma judoca, nasceu dia 20 de maio de 1998 na cidade Itariri em São Paulo. É sargento do exército e campeã olímpica brasileira. Beatriz conquistou a primeira medalha de ouro do Brasil nas Olimpíadas de 2024 em Paris e com isso se tornou a primeira mulher a conquistar uma medalha de ouro Olímpica na história do Esporte Clube Pinheiros.</p>
+                        </div>
+                    </article>
+
+                    <!-- Anderson Silva -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="500">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">🥊</span>
+                                <span class="sport-badge">MMA/UFC</span>
+                            </div>
+                            <h3 class="athlete-name">Anderson Silva</h3>
+                            <p class="athlete-year">1975, São Paulo</p>
+                            <p class="athlete-description">Anderson Silva nasceu em São Paulo, no dia 14 de abril de 1975. Com 4 anos mudou-se para a casa dos tios em Curitiba, onde começou a treinar taekwondo e com 18 anos já era faixa preta da modalidade. É um lutador brasileiro de MMA (Artes Marciais Mistas). Recordista de vitórias da UFC (Ultimate Fighting Championship) foi considerado o melhor do mundo na categoria dos pesos-médios.</p>
+                        </div>
+                    </article>
+
+                    <!-- Daiane Garcia -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="600">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">🤸‍♀️</span>
+                                <span class="sport-badge">Ginástica Artística</span>
+                            </div>
+                            <h3 class="athlete-name">Daiane Garcia dos Santos</h3>
+                            <p class="athlete-year">1983, Porto Alegre (RS)</p>
+                            <p class="athlete-description">Daiane Garcia dos Santos, nascida em 10 de fevereiro de 1983 em Porto Alegre, Rio Grande do Sul, é uma ginasta artística que se tornou ícone no esporte, sendo a primeira brasileira a ganhar uma medalha em Campeonatos Mundiais (bronze no solo em 2003). Como atleta negra, ela quebrou barreiras na ginástica, competindo nas Olimpíadas de 2004 em Atenas (5º lugar no solo) e conquistando diversos títulos pan-americanos e sul-americanos, promovendo representatividade e inspirando mulheres negras no Brasil.</p>
+                        </div>
+                    </article>
+
+                    <!-- Alfredo Brilhante -->
+                    <article class="athlete-card fade-in" data-aos="fade-up" data-aos-delay="700">
+                        <div class="athlete-info">
+                            <div class="athlete-header">
+                                <span class="sport-icon">🏀</span>
+                                <span class="sport-badge">Basquete</span>
+                            </div>
+                            <h3 class="athlete-name">Alfredo Brilhante da Costa</h3>
+                            <p class="athlete-year">1931-2004, Rio de Janeiro</p>
+                            <p class="athlete-description">Alfredo Brilhante da Costa, nascido em 1931 no Rio de Janeiro, foi um proeminente jogador de basquete negro brasileiro que representou o país nas décadas de 1950 e 1960, integrando a seleção nacional em campeonatos sul-americanos e no Mundial de 1959, onde ajudou a conquistar medalhas e promover a diversidade no esporte. Conhecido por sua habilidade e dedicação, ele foi um pioneiro para atletas negros no basquete brasileiro, inspirando gerações futuras antes de se aposentar e falecer em 2004.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Créditos -->
+        <section class="credits" id="creditos">
+            <div class="container">
+                <div class="credits-content fade-in">
+                    <h2>Créditos &amp; Referências</h2>
+                    <div class="credits-grid">
+                        <div class="discentes">
+                            <h3>Discentes Responsáveis</h3>
+                            <ul>
+                                <li>Ana Clara Ferreira</li>
+                                <li>Gabriella Silva do Nascimento</li>
+                                <li>Hanna Nayla</li>
+                                <li>Marcos Antônio Barbosa de Souza</li>
+                                <li>Maria Letícia Alves Sampaio</li>
+                            </ul>
+                        </div>
+                        <div class="referencias">
+                            <h3>Fontes Consultadas</h3>
+                            <ul>
+                                <li>Comitê Olímpico Brasileiro (COB)</li>
+                                <li>Confederação Brasileira de Ginástica</li>
+                                <li>FIFA World Cup Archives</li>
+                                <li>Ultimate Fighting Championship (UFC)</li>
+                                <li>Arquivo Nacional do Esporte</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Universidade Estadual de Goiás</h3>
+                    <p>Promovendo educação de qualidade e valorizando a diversidade brasileira</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="https://www.ueg.br" target="_blank">Portal UEG</a></li>
+                        <li><a href="https://www.cob.org.br" target="_blank">COB</a></li>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#atletas">Atletas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Universidade Estadual de Goiás. Todos os direitos reservados.</p>
+            </div>
         </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_vini.png" alt="Vinícius Junior, futebol" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">⚽</span> Vinícius Junior</div>
-          <div class="badge">Futebol</div>
-          <div class="nasc">2000, Rio de Janeiro</div>
-          <div class="desc">
-            Vinícius Júnior, atacante do Real Madrid e da Seleção Brasileira, é símbolo de velocidade, habilidade, ativismo social e medalhista olímpico.
-          </div>
-        </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_formiga.png" alt="Formiga, futebol feminino" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">⚽</span> Formiga (Miraildes Maciel Mota)</div>
-          <div class="badge">Futebol Feminino</div>
-          <div class="nasc">1978</div>
-          <div class="desc">
-            Formiga é a atleta com mais participações olímpicas do mundo (7), referência no futebol feminino e na luta pela igualdade.
-          </div>
-        </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_bia.png" alt="Beatriz Souza, judô" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">🥋</span> Beatriz Souza</div>
-          <div class="badge">Judô</div>
-          <div class="nasc">1998, Itariri (SP)</div>
-          <div class="desc">
-            Beatriz Souza, judoca campeã olímpica, símbolo de força e pioneirismo, conquistou ouro nas Olimpíadas de Paris 2024.
-          </div>
-        </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_aranha.jpg" alt="Anderson Silva, MMA/UFC" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">🥊</span> Anderson Silva</div>
-          <div class="badge">MMA / UFC</div>
-          <div class="nasc">1975, São Paulo</div>
-          <div class="desc">
-            Anderson Silva, maior nome do MMA brasileiro, foi campeão dos pesos-médios do UFC e referência mundial no esporte.
-          </div>
-        </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_daiane.jpg" alt="Daiane dos Santos, ginasta" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">🤸‍♀️</span> Daiane Garcia dos Santos</div>
-          <div class="badge">Ginástica Artística</div>
-          <div class="nasc">1983, Porto Alegre (RS)</div>
-          <div class="desc">
-            Daiane dos Santos, primeira brasileira medalhista em Mundiais de Ginástica, referência em representatividade negra e inspiração para jovens.
-          </div>
-        </div>
-      </div>
-      <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_brilhante.jpg" alt="Alfredo Brilhante da Costa, basquete" />
-        <div class="atleta-info">
-          <div class="atleta-nome"><span class="icone">🏀</span> Alfredo Brilhante da Costa</div>
-          <div class="badge">Basquete</div>
-          <div class="nasc">1931-2004, Rio de Janeiro</div>
-          <div class="desc">
-            Alfredo Brilhante, atleta pioneiro no basquete brasileiro, ícone de dedicação e representatividade na década de 50 e 60.
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="creditos">
-      <strong>Discentes responsáveis:</strong>
-      Ana Clara Ferreira, Gabriella Silva do Nascimento, Hanna Nayla, Marcos Antônio Barbosa de Souza, Maria Letícia Alves Sampaio
-    </div>
-    <div class="referencias">
-      <strong>Referências:</strong>
-      Conteúdo extraído do projeto acadêmico “Esportistas Negros do Brasil”, Universidade Estadual de Goiás.
-    </div>
-  </main>
-  <footer class="footer">
-    Universidade Estadual de Goiás (UEG) &copy; 2025. Todos os direitos reservados.
-  </footer>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>

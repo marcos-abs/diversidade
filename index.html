@@ -2,9 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Esportistas Negros do Brasil</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter:700,400|Roboto:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --azul-ueg: #1e3a8a;
@@ -15,26 +14,48 @@
       --cinza: #f3f4f6;
       --texto: #1f2937;
     }
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-ueg) 70%, var(--verde-ueg) 100%);
-      margin: 0; color: var(--branco);
+
+    * {
+      box-sizing: border-box;
     }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-ueg) 70%, var(--verde-ueg) 100%);
+      margin: 0;
+      padding: 0;
+      color: var(--branco);
+      overflow-x: hidden;
+      min-width: 100%;
+      width: 100%;
+    }
+
     .hero {
       text-align: center;
       padding: 48px 24px 32px;
       background: linear-gradient(90deg, var(--azul-ueg), var(--verde-ueg) 60%);
     }
+
     .hero h1 {
-      font-family: 'Inter', Arial, sans-serif;
-      font-size: 2.8em; font-weight: 700;
+      font-family: Arial, sans-serif;
+      font-size: 2.8em;
+      font-weight: 700;
       margin-bottom: 0.3em;
     }
+
     .hero p {
       font-size: 1.2em;
-      max-width: 640px; margin: 0 auto;
+      max-width: 640px;
+      margin: 0 auto;
       color: var(--amarelo);
     }
+
     main {
       background: var(--branco);
       color: var(--texto);
@@ -43,7 +64,9 @@
       margin-top: -36px;
       box-shadow: 0 -2px 12px rgba(30,58,138,0.13);
       padding-bottom: 40px;
+      overflow: hidden;
     }
+
     .intro {
       text-align: center;
       font-size: 1.1em;
@@ -54,12 +77,15 @@
       margin: 0 16px 32px 16px;
       box-shadow: 0 2px 8px rgba(30,58,138,0.09);
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
       gap: 2.5rem;
       margin: 0 32px 42px 32px;
+      width: auto;
     }
+
     .atleta-card {
       background: var(--branco);
       border-radius: 16px;
@@ -71,12 +97,16 @@
       justify-content: stretch;
       position: relative;
       border: 2px solid var(--cinza);
+      min-width: 0;
+      width: 100%;
     }
+
     .atleta-card:hover {
       transform: translateY(-8px) scale(1.03);
       box-shadow: 0 10px 32px rgba(30,58,138,0.16);
       border-color: var(--verde-ueg);
     }
+
     .atleta-card img {
       width: 100%;
       height: 220px;
@@ -85,119 +115,129 @@
       background: #d8dde1;
       display: block;
     }
+
     .atleta-info {
       padding: 22px 16px 14px 16px;
       flex: 1 1 auto;
     }
+
     .atleta-nome {
-      font-family: 'Inter', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 1.23em;
       font-weight: 700;
       margin-bottom: 7px;
       color: var(--azul-ueg);
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       gap: 7px;
     }
+
     .atleta-nome span.icone {
       font-size: 1.25em;
     }
+
     .badge {
       display: inline-block;
       background: var(--verde-ueg);
       color: var(--branco);
-      font-size: 0.98em;
-      font-weight: 700;
-      border-radius: 16px;
-      padding: 3px 12px 5px 12px;
-      margin-bottom: 7px;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 0.82em;
+      font-weight: 600;
+      margin-bottom: 9px;
     }
-    .desc {
-      font-size: 1.03em;
-      margin-bottom: 7px;
-      margin-top: 4px;
-    }
+
     .nasc {
-      font-size: 0.97em;
-      margin-bottom: 4px;
-      color: var(--azul-escuro);
-      opacity: 0.74;
+      font-size: 0.88em;
+      color: #6b7280;
+      margin-bottom: 10px;
+      font-weight: 500;
     }
-    .creditos, .referencias {
-      margin: 38px auto 0 auto;
-      max-width: 560px;
+
+    .desc {
       color: var(--texto);
-      font-size: 1em;
-      background: var(--cinza);
-      border-radius: 13px;
-      box-shadow: 0 1px 6px rgba(30,58,138,0.06);
-      padding: 14px 24px 11px 24px;
+      line-height: 1.6;
+      font-size: 0.94em;
     }
-    .creditos strong, .referencias strong {color: var(--azul-ueg);}
-    .footer {
+
+    footer {
       background: var(--azul-escuro);
       color: var(--branco);
+      padding: 28px 18px;
       text-align: center;
-      padding: 20px 10px 14px 10px;
-      font-size: 1em;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      margin-top: 38px;
-      letter-spacing: 0.02em;
-    }
-    @media (max-width:1024px) {
-      .grid {margin: 0 14px;}
-    }
-    @media (max-width:768px) {
-      .hero h1 {font-size: 2em;}
-      .grid {grid-template-columns: 1fr;}
-      main {border-radius: 16px;}
-    }
-    @media (max-width:480px) {
-      .grid {margin: 0 2px;}
-      .intro {margin: 0 2px;}
+      font-size: 0.92em;
+      line-height: 1.7;
     }
 
-    /* Fix para mobile: previne cards diminuindo ao rolar */
-    @media (max-width: 360px) {
+    footer p {
+      margin: 9px 0;
+    }
+
+    footer strong {
+      color: var(--amarelo);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        margin: 0 14px 32px 14px;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .grid {
+        gap: 1.5rem;
+        margin: 0 12px 32px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
       .grid {
         grid-template-columns: 1fr;
+        margin: 0 8px 32px 8px;
         gap: 1.5rem;
       }
-    }
 
-  </style>
-  <script>
-    // Animações scroll reveal simples
-    document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.atleta-card');
-      function showOnScroll() {
-        cards.forEach(card => {
-          const rect = card.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 60) {
-            card.style.opacity = 1;
-            card.style.transform += ' scale(1)';
-          } else {
-            card.style.opacity = 0;
-            card.style.transform += ' scale(0.98)';
-          }
-        });
+      .hero h1 {
+        font-size: 1.8em;
       }
-      window.addEventListener('scroll', showOnScroll);
-      showOnScroll();
-    });
-  </script>
+
+      .hero p {
+        font-size: 1em;
+      }
+
+      .intro {
+        font-size: 1em;
+        padding: 24px 16px;
+      }
+
+      .atleta-card {
+        max-width: 100%;
+      }
+
+      .atleta-card img {
+        height: 180px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="hero">
-    <h1>Esportistas Negros do Brasil</h1>
-    <p style="height: 68px;">Inspirando gerações pelo esporte, superação e representatividade negra. Conheça atletas que mudaram a história do Brasil e do mundo!</p>
+    <h1>🏆 Esportistas Negros do Brasil</h1>
+    <p>Histórias de superação, conquistas e representatividade no esporte brasileiro</p>
   </div>
+
   <main>
-    <section class="intro">
-      O esporte brasileiro sempre foi palco de grandes feitos de atletas negros que desafiaram barreiras e inspiraram gerações! Conheça as histórias, conquistas e trajetórias dos maiores esportistas negros do Brasil.<br>
-    </section>
-    <section class="grid">
-      <!-- Cards dos atletas -->
+    <div class="intro">
+      Celebramos as trajetórias incríveis de atletas negros brasileiros que desafiaram barreiras e inspiraram gerações! Conheça as histórias, conquistas e trajetórias dos maiores esportistas negros do Brasil.
+    </div>
+
+    <div class="grid">
       <div class="atleta-card">
         <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_beca.png" alt="Rebeca Andrade, ginasta" />
         <div class="atleta-info">
@@ -209,6 +249,7 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
         <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_pele.png" alt="Pelé, futebol" />
         <div class="atleta-info">
@@ -220,6 +261,7 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
         <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_vini.png" alt="Vinícius Junior, futebol" />
         <div class="atleta-info">
@@ -231,6 +273,7 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
         <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_formiga.png" alt="Formiga, futebol feminino" />
         <div class="atleta-info">
@@ -242,6 +285,7 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
         <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_bia.png" alt="Beatriz Souza, judô" />
         <div class="atleta-info">
@@ -253,8 +297,9 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_aranha.jpg" alt="Anderson Silva, MMA/UFC" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_aranha.jpg" alt="Anderson Silva, MMA" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🥊</span> Anderson Silva</div>
           <div class="badge">MMA / UFC</div>
@@ -264,8 +309,9 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_daiane.jpg" alt="Daiane dos Santos, ginasta" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_daiane.jpg" alt="Daiane dos Santos, ginástica" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🤸‍♀️</span> Daiane Garcia dos Santos</div>
           <div class="badge">Ginástica Artística</div>
@@ -275,8 +321,9 @@
           </div>
         </div>
       </div>
+
       <div class="atleta-card">
-        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_brilhante.jpg" alt="Alfredo Brilhante da Costa, basquete" />
+        <img src="https://raw.githubusercontent.com/marcos-abs/diversidade/refs/heads/master/image_brilhante.jpg" alt="Alfredo Brilhante, basquete" />
         <div class="atleta-info">
           <div class="atleta-nome"><span class="icone">🏀</span> Alfredo Brilhante da Costa</div>
           <div class="badge">Basquete</div>
@@ -286,18 +333,12 @@
           </div>
         </div>
       </div>
-    </section>
-    <div class="creditos">
-      <strong>Discentes responsáveis:</strong>
-      Ana Clara Ferreira, Gabriella Silva do Nascimento, Hanna Nayla, Marcos Antônio Barbosa de Souza, Maria Letícia Alves Sampaio
-    </div>
-    <div class="referencias">
-      <strong>Referências:</strong>
-      Conteúdo extraído do projeto acadêmico “Esportistas Negros do Brasil”, Universidade Estadual de Goiás.
     </div>
   </main>
-  <footer class="footer">
-    Universidade Estadual de Goiás (UEG) &copy; 2025. Todos os direitos reservados.
+
+  <footer>
+    <p><strong>Discentes responsáveis:</strong><br>Ana Clara Ferreira, Gabriella Silva do Nascimento, Hanna Nayla, Marcos Antônio Barbosa de Souza, Maria Letícia Alves Sampaio</p>
+    <p><strong>Referências:</strong><br>Conteúdo extraído do projeto acadêmico "Esportistas Negros do Brasil", Universidade Estadual de Goiás.</p>
   </footer>
 </body>
 </html>
